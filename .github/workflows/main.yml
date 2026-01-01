@@ -117,6 +117,18 @@ jobs:
           curl -s -o "General_Config/fufu/ConfigForClash.yaml" \
             "https://raw.githubusercontent.com/sunfing/iNg/refs/heads/main/Config/ConfigForClash"
 
+          # --- liuran001 ---
+          mkdir -p "General_Config/liuran001"
+          curl -s -o "General_Config/liuran001/config.yaml" \
+            "https://gist.githubusercontent.com/liuran001/5ca84f7def53c70b554d3f765ff86a33/raw/9de058af0600fbbcfb480f9cbc23bd7dafe9d039/config.yaml"
+
+          # --- 新项目名称 (自定义) ---
+          # mkdir -p "General_Config/新项目文件夹名"
+          # curl -s -o "General_Config/新项目文件夹名/config.yaml" \
+            # "这里粘贴你的raw文件下载链接"
+
+
+
 
           # ==========================================
           # 3. Smart模式 (Smart_Mode)
