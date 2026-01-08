@@ -18,7 +18,7 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
     steps:
       - name: 检查代码仓库
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: 设置 Python 环境
         uses: actions/setup-python@v4
