@@ -141,6 +141,7 @@
 | **路由器** | **Nikki** | 🟢 | (OpenWrt) 轻量化，启动快，依赖 nftables。 | 原 MihomoTProxy，适合现代 OpenWrt。 | [Github](https://github.com/nikkinikki-org/OpenWrt-nikki) |
 | **路由器** | ShellCrash | 🟢 | (小米/SSH) 性能强，通过 SSH 管理。 | 无 Web UI (或仅有简单面板)。 | [Github](https://github.com/juewuy/ShellCrash) |
 | **路由器** | MerlinClash2 | 🟢 | (华硕) 梅林固件首选，精简重构。 | 不支持老旧 CPU 型号。 | [Website](https://mclash.cn/) |
+| **NAS（docker）** | easy-mihomo | 🟢 | fnos的首选。 | 新星软件依赖docker | [TELEGRAM](https://github.com/wlaosj/easy-mihomo) |
 
 ---
 
