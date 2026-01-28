@@ -216,7 +216,7 @@ jobs:
           cd ..
 
       - name: Commit and Push
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "Sync all INI configs [$(date +'%Y-%m-%d')]"
           file_pattern: Overwrite/*
