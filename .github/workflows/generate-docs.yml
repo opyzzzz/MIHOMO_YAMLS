@@ -30,12 +30,9 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml
 
-      # ==========================================
-      # 1. 为 THEYAMLS 下的一级分类生成技术分析文档（递归收集所有作者配置）
-      # ==========================================
-      - name: Generate Category READMEs (Level 1)
+      - name: Generate Category READMEs
         run: |
-          python3 << 'PYTHON_SCRIPT'
+          python3 << 'SCRIPT'
           import os
           import urllib.parse
           import yaml
@@ -154,27 +151,21 @@ jobs:
                   return None
 
           def generate_category_readme(folder_path, title):
-              """为一级分类目录生成 README，递归收集所有 YAML 文件"""
               rel_folder = os.path.relpath(folder_path, ".")
-              
-              # 递归收集所有 YAML 文件
               all_files = []
               for root, dirs, files in os.walk(folder_path):
                   dirs[:] = [d for d in dirs if not d.startswith('.')]
                   for f in files:
                       if f.endswith(('.yaml', '.yml')) and f not in IGNORE_FILES:
                           full_path = os.path.join(root, f)
-                          # 计算相对于该分类目录的路径（包含作者名）
                           rel_path = os.path.relpath(full_path, folder_path)
                           all_files.append((rel_path, full_path))
               
               if not all_files:
                   return None
 
-              # 解析所有配置
               configs_data = {}
               for rel_path, full_path in all_files:
- in all_files:
                   parsed = analyze_single_config(full_path)
                   if parsed:
                       configs_data[rel_path] = {
@@ -194,12 +185,11 @@ jobs:
               lines.append("> 🤖 **自动技术分析报告** | Auto-generated Technical Report")
               lines.append("")
 
-              # 横向对比表格（最多显示10个文件避免过宽）
               if len(configs_data) > 1:
                   lines.append("## ⚔️ 配置横向对比 (Comparison)")
                   lines.append("")
                   
-                  display_items = list(configs_data.items())[:10]  # 限制数量避免表格过宽
+                  display_items = list(configs_data.items())[:10]
                   headers = ["特性 / 文件"] + [f"`{os.path.basename(p)}`" for p, _ in display_items]
                   lines.append("| " + " | ".join(headers) + " |")
                   lines.append("| :--- " + "| :--- " * len(display_items) + "|")
@@ -221,11 +211,9 @@ jobs:
                       lines.append("| " + " | ".join(row_content) + " |")
                   lines.append("")
 
-              # 按作者分组展示详情
               lines.append("## 📄 配置文件详解 (Details by Author)")
               lines.append("")
               
-              # 按作者分组
               by_author = {}
               for rel_path, data in configs_data.items():
                   author = rel_path.split(os.sep)[0] if os.sep in rel_path else "Unknown"
@@ -245,7 +233,6 @@ jobs:
                       lines.append(f"#### 📝 {filename}")
                       lines.append(f"- **路径**: `{rel_path}` | **大小**: {data['file_size']} | **[Raw]({file_url})**")
                       
-                      # 端口信息
                       port_lines = info.get("ports_display_lines", [])
                       if port_lines:
                           lines.append("- **端口配置**:")
@@ -255,7 +242,6 @@ jobs:
                               lines.append(line)
                           lines.append("")
                       
-                      # 策略组架构
                       groups_raw = info.get("groups_raw", [])
                       if groups_raw:
                           lines.append(f"<details>")
@@ -273,7 +259,6 @@ jobs:
 
               return "\n".join(lines)
 
-          # 仅为四个一级分类目录生成
           for folder_name, title in CATEGORIES.items():
               if os.path.isdir(folder_name):
                   readme_content = generate_category_readme(folder_name, title)
@@ -282,23 +267,15 @@ jobs:
                       with open(readme_path, "w", encoding="utf-8") as f:
                           f.write(readme_content)
                       print(f"✅ Generated: {readme_path}")
-                  else:
-                      print(f"⚠️ No YAML configs found in {folder_name}")
-              else:
-                  print(f"⚠️ Directory not found: {folder_name}")
-          PYTHON_SCRIPT
+          SCRIPT
 
-      # ==========================================
-      # 2. 生成根目录 README（基于脚本逆推作者）
-      # ==========================================
       - name: Generate Root README
         run: |
-          python3 << 'PYTHON_SCRIPT'
+          python3 << 'SCRIPT'
           import os
           import re
 
           def parse_shell_script(script_path):
-              """解析 shell 脚本，提取 URL 和输出映射"""
               if not os.path.exists(script_path):
                   return []
               
@@ -306,14 +283,12 @@ jobs:
                   content = f.read()
               
               results = []
-              # 匹配模式: url|output_path.yaml
               pattern = r'(https?://[^|\s"\']+)\|([^"\n]+?\.ya?ml)'
               matches = re.findall(pattern, content)
               
               for url, output_path in matches:
                   output_path = output_path.strip()
                   
-                  # 解析作者
                   if 'raw.githubusercontent.com' in url:
                       parts = url.split('/')
                       author = parts[4] if len(parts) > 4 else 'unknown'
@@ -326,7 +301,6 @@ jobs:
                   else:
                       author = url.split('/')[2].split('.')[0]
                   
-                  # 解析分类
                   category = 'Other'
                   if 'General_Config' in output_path:
                       category = 'General'
@@ -338,7 +312,6 @@ jobs:
                       category = 'Official'
                   
                   filename = os.path.basename(url)
-                  # 构建源仓库链接
                   parts = url.split('/')
                   if 'raw.githubusercontent.com' in url and len(parts) >= 5:
                       repo_url = f"https://github.com/{parts[3]}/{parts[4]}"
@@ -368,7 +341,6 @@ jobs:
           for cat, script in scripts_map.items():
               all_data[cat] = parse_shell_script(script)
 
-          # 作者描述映射
           author_desc = {
               'HenryChiao': '全能型配置，整合多种策略；Pro系列策略组更加细化',
               '666OS': '规则策略多而全，格式美观；OneTouch 为一键连精简版',
@@ -425,10 +397,9 @@ jobs:
           lines.append("---")
           lines.append("")
 
-          # 详细表格
           categories = [
               ('General_Config', '通用进阶配置 (General Config)', '适合 PC、Mac 及普通手机端使用的全功能配置。'),
-              ('Smart_Mode', 'Smart 模式 / 路由专用 (Smart Mode)', '专为 Smart 核心、OpenClash 或软路由环境优化。需配合 [Smart 魔改内核](https://github.com/vernesong/mihomo/releases)。'),
+              ('Smart_Mode', 'Smart 模式 / 路由专用 (Smart Mode)', '专为 Smart 核心、OpenClash 或软路由环境优化。需配合 Smart 魔改内核使用。'),
               ('Mobile_Modules', 'Android 模块专用 (Mobile Modules)', '适合已获取 Root 权限 (Magisk/KernelSU/APatch) 的用户。'),
               ('Official_Examples', 'Mihomo 官方 Wiki 示例 (Official)', '最纯净、最基础，适合从零开始构建或学习配置语法。')
           ]
@@ -444,7 +415,6 @@ jobs:
               lines.append("| 👤 作者 (Author) | 📦 配置清单 (Configs) | 📝 描述 (Description) | 🔗 溯源 (Source) |")
               lines.append("| :--- | :--- | :--- | :--- |")
               
-              # 按作者分组
               by_author = {}
               for item in items:
                   auth = item['author']
@@ -453,7 +423,6 @@ jobs:
                   by_author[auth].append(item)
               
               for author, files in sorted(by_author.items()):
-                  # 文件链接（指向 THEYAMLS 下的路径）
                   file_links = "<br>".join([
                       f"📄 [`{f['filename']}`](THEYAMLS/{f['output']})" 
                       for f in files
@@ -472,14 +441,11 @@ jobs:
           with open("README.md", "w", encoding="utf-8") as f:
               f.write("\n".join(lines))
           print("✅ Generated root README.md")
-          PYTHON_SCRIPT
+          SCRIPT
 
-      # ==========================================
-      # 3. 生成 OpenClash 配置 (THEOPENCLASH)
-      # ==========================================
       - name: Generate OpenClash Configs
         run: |
-          python3 << 'PYTHON_SCRIPT'
+          python3 << 'SCRIPT'
           import os
           import yaml
           from urllib.parse import quote
@@ -564,21 +530,17 @@ jobs:
                       with open(output_path, "w", encoding="utf-8") as f:
                           f.write("\n".join(lines))
                       print(f"✅ OpenClash: {output_path}")
-          PYTHON_SCRIPT
+          SCRIPT
 
-      # ==========================================
-      # 4. 为 THEOPENCLASH 生成 README
-      # ==========================================
       - name: Generate OpenClash READMEs
         run: |
-          python3 << 'PYTHON_SCRIPT'
+          python3 << 'SCRIPT'
           import os
           
           OUTPUT_BASE = "Overwrite/THEOPENCLASH"
           if not os.path.exists(OUTPUT_BASE):
               exit(0)
           
-          # 为每个分类生成 README
           for category in os.listdir(OUTPUT_BASE):
               cat_path = os.path.join(OUTPUT_BASE, category)
               if not os.path.isdir(cat_path):
@@ -608,7 +570,6 @@ jobs:
               with open(os.path.join(cat_path, "README.md"), "w", encoding="utf-8") as f:
                   f.write("\n".join(lines))
 
-          # 主索引
           lines = [
               "# 📦 OpenClash 覆写配置文件总览",
               "",
@@ -627,17 +588,13 @@ jobs:
           
           with open(os.path.join(OUTPUT_BASE, "README.md"), "w", encoding="utf-8") as f:
               f.write("\n".join(lines))
-          PYTHON_SCRIPT
+          SCRIPT
 
-      # ==========================================
-      # 5. 为 THEINI 生成 README
-      # ==========================================
       - name: Generate INI README
         run: |
-          python3 << 'PYTHON_SCRIPT'
+          python3 << 'SCRIPT'
           import os
           import re
-          import subprocess
 
           def parse_ini_script():
               script_path = ".github/scripts/download-ini.sh"
@@ -723,6 +680,7 @@ jobs:
           lines.append("## 📊 目录结构")
           lines.append("```text")
           try:
+              import subprocess
               tree_out = subprocess.run(["tree", base_path, "-L", "3", "--dirsfirst", "--charset", "utf-8"],
                   capture_output=True, text=True)
               lines.append(tree_out.stdout.strip())
@@ -732,11 +690,8 @@ jobs:
 
           with open(os.path.join(base_path, "README.md"), "w", encoding="utf-8") as f:
               f.write("\n".join(lines))
-          PYTHON_SCRIPT
+          SCRIPT
 
-      # ==========================================
-      # 6. 提交更改
-      # ==========================================
       - name: Commit and Push
         run: |
           git config --global user.name "github-actions[bot]"
