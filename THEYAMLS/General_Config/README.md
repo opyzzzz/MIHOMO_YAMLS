@@ -1,6 +1,6 @@
 # 📂 通用进阶配置 (General Config)
 
-[🔙 返回主页](../README.md)
+[🔙 返回主页](../../README.md)
 
 > 🤖 **自动技术分析报告** | Auto-generated Technical Report
 
@@ -22,7 +22,9 @@
 
 #### 📝 MihomoPro_Config.yaml
 - **路径**: `666OS/MihomoPro_Config.yaml` | **大小**: 22.6 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/666OS/MihomoPro_Config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -33,7 +35,7 @@
 | Controller | 127.0.0.1:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (52个)</summary>
+<summary>🔎 策略组架构 (52个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -53,11 +55,14 @@
 | 👆 电报消息 | `select` |
 | 👆 推特社交 | `select` |
 | ... | 还有 37 个 |
+
 </details>
 
 #### 📝 OneTouch_Config.yaml
 - **路径**: `666OS/OneTouch_Config.yaml` | **大小**: 12.4 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/666OS/OneTouch_Config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -68,7 +73,7 @@
 | Controller | 127.0.0.1:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (15个)</summary>
+<summary>🔎 策略组架构 (15个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -87,6 +92,7 @@
 | ♻️ 韩国自动 | `url-test` |
 | ♻️ 美国自动 | `url-test` |
 | ♻️ 欧洲自动 | `url-test` |
+
 </details>
 
 ---
@@ -95,14 +101,16 @@
 
 #### 📝 Clash.yaml
 - **路径**: `ClashConnectRules/Clash.yaml` | **大小**: 27.3 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/ClashConnectRules/Clash.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 | Controller | :9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (27个)</summary>
+<summary>🔎 策略组架构 (27个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -122,6 +130,7 @@
 | 👆 🌐 国际流量 | `select` |
 | 👆 🎯 国内流量 | `select` |
 | ... | 还有 12 个 |
+
 </details>
 
 ---
@@ -130,7 +139,9 @@
 
 #### 📝 MihomoAIO.yaml
 - **路径**: `HenryChiao/MihomoAIO.yaml` | **大小**: 30.1 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/HenryChiao/MihomoAIO.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -150,7 +161,7 @@
 | 👂 MIXED-AL | 50007 | mixed |
 
 <details>
-<summary>🔎 策略组架构 (61个)</summary>
+<summary>🔎 策略组架构 (61个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -170,11 +181,14 @@
 | 👆 Max | `select` |
 | 👆 Prime Video | `select` |
 | ... | 还有 46 个 |
+
 </details>
 
 #### 📝 MihomoProMax.yaml
 - **路径**: `HenryChiao/MihomoProMax.yaml` | **大小**: 27.5 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/HenryChiao/MihomoProMax.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -194,7 +208,7 @@
 | 👂 MIXED-AL | 50007 | mixed |
 
 <details>
-<summary>🔎 策略组架构 (54个)</summary>
+<summary>🔎 策略组架构 (54个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -214,11 +228,14 @@
 | 👆 新闻媒体 | `select` |
 | 👆 电报消息 | `select` |
 | ... | 还有 39 个 |
+
 </details>
 
 #### 📝 MihomoProPlus.yaml
 - **路径**: `HenryChiao/MihomoProPlus.yaml` | **大小**: 28.0 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/HenryChiao/MihomoProPlus.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -238,7 +255,7 @@
 | 👂 MIXED-AL | 50007 | mixed |
 
 <details>
-<summary>🔎 策略组架构 (54个)</summary>
+<summary>🔎 策略组架构 (54个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -258,6 +275,7 @@
 | 👆 新闻媒体 | `select` |
 | 👆 电报消息 | `select` |
 | ... | 还有 39 个 |
+
 </details>
 
 ---
@@ -266,14 +284,16 @@
 
 #### 📝 AIB.yaml
 - **路径**: `JohnsonRan/AIB.yaml` | **大小**: 11.0 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/JohnsonRan/AIB.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (24个)</summary>
+<summary>🔎 策略组架构 (24个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -293,18 +313,21 @@
 | 👆 Bilibili | `select` |
 | 👆 Microsoft | `select` |
 | ... | 还有 9 个 |
+
 </details>
 
 #### 📝 AIO.yaml
 - **路径**: `JohnsonRan/AIO.yaml` | **大小**: 11.1 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/JohnsonRan/AIO.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (24个)</summary>
+<summary>🔎 策略组架构 (24个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -324,6 +347,7 @@
 | 👆 Porns | `select` |
 | 👆 Bilibili | `select` |
 | ... | 还有 9 个 |
+
 </details>
 
 ---
@@ -332,14 +356,16 @@
 
 #### 📝 configfull_NoAd.yaml
 - **路径**: `Lanlan13-14/configfull_NoAd.yaml` | **大小**: 33.5 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/Lanlan13-14/configfull_NoAd.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (59个)</summary>
+<summary>🔎 策略组架构 (59个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -359,18 +385,21 @@
 | 👆 LINE | `select` |
 | 👆 Signal | `select` |
 | ... | 还有 44 个 |
+
 </details>
 
 #### 📝 configfull_lite.yaml
 - **路径**: `Lanlan13-14/configfull_lite.yaml` | **大小**: 17.5 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/Lanlan13-14/configfull_lite.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (47个)</summary>
+<summary>🔎 策略组架构 (47个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -390,18 +419,21 @@
 | 👆 Apple | `select` |
 | 👆 Emby | `select` |
 | ... | 还有 32 个 |
+
 </details>
 
 #### 📝 configfull.yaml
 - **路径**: `Lanlan13-14/configfull.yaml` | **大小**: 33.9 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/Lanlan13-14/configfull.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (62个)</summary>
+<summary>🔎 策略组架构 (62个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -421,6 +453,7 @@
 | 👆 LINE | `select` |
 | 👆 Signal | `select` |
 | ... | 还有 47 个 |
+
 </details>
 
 ---
@@ -429,13 +462,15 @@
 
 #### 📝 mihomo.yaml
 - **路径**: `echs-top/mihomo.yaml` | **大小**: 17.8 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/echs-top/mihomo.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Controller | 127.0.0.1:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (31个)</summary>
+<summary>🔎 策略组架构 (31个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -455,6 +490,7 @@
 | 👆 YOUTUBE | `select` |
 | 👆 AI | `select` |
 | ... | 还有 16 个 |
+
 </details>
 
 ---
@@ -463,7 +499,9 @@
 
 #### 📝 ConfigForClash.yaml
 - **路径**: `fufu/ConfigForClash.yaml` | **大小**: 49.3 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/fufu/ConfigForClash.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7892 | HTTP/SOCKS |
@@ -474,7 +512,7 @@
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (62个)</summary>
+<summary>🔎 策略组架构 (62个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -494,6 +532,7 @@
 | 👆 ✨ ChatGPT | `select` |
 | 👆 ✨ Claude | `select` |
 | ... | 还有 47 个 |
+
 </details>
 
 ---
@@ -502,7 +541,9 @@
 
 #### 📝 Clash_Sample.yaml
 - **路径**: `iKeLee/Clash_Sample.yaml` | **大小**: 12.5 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/iKeLee/Clash_Sample.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7892 | HTTP/SOCKS |
@@ -514,7 +555,7 @@
 | 👂 socks5-in-1 | 10808 | socks |
 
 <details>
-<summary>🔎 策略组架构 (22个)</summary>
+<summary>🔎 策略组架构 (22个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -534,6 +575,7 @@
 | ♻️ 香港自动策略 | `url-test` |
 | ♻️ 台湾自动策略 | `url-test` |
 | ... | 还有 7 个 |
+
 </details>
 
 ---
@@ -542,7 +584,9 @@
 
 #### 📝 clash-fallback-dialer.yaml
 - **路径**: `liandu2024/clash-fallback-dialer.yaml` | **大小**: 16.3 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/liandu2024/clash-fallback-dialer.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -553,7 +597,7 @@
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (35个)</summary>
+<summary>🔎 策略组架构 (35个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -573,11 +617,14 @@
 | 👆 其他 | `select` |
 | 👆 所有-手动 | `select` |
 | ... | 还有 20 个 |
+
 </details>
 
 #### 📝 clash-fallback-std.yaml
 - **路径**: `liandu2024/clash-fallback-std.yaml` | **大小**: 17.3 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/liandu2024/clash-fallback-std.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -588,7 +635,7 @@
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (36个)</summary>
+<summary>🔎 策略组架构 (36个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -608,11 +655,14 @@
 | 👆 国外 | `select` |
 | 👆 国内 | `select` |
 | ... | 还有 21 个 |
+
 </details>
 
 #### 📝 clash-fallback.yaml
 - **路径**: `liandu2024/clash-fallback.yaml` | **大小**: 15.9 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/liandu2024/clash-fallback.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -623,7 +673,7 @@
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (34个)</summary>
+<summary>🔎 策略组架构 (34个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -643,11 +693,14 @@
 | 👆 其他 | `select` |
 | 👆 所有-手动 | `select` |
 | ... | 还有 19 个 |
+
 </details>
 
 #### 📝 clash-all-fallback.yaml
 - **路径**: `liandu2024/clash-all-fallback.yaml` | **大小**: 17.2 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/liandu2024/clash-all-fallback.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -658,7 +711,7 @@
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (53个)</summary>
+<summary>🔎 策略组架构 (53个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -678,11 +731,14 @@
 | 👆 Disney | `select` |
 | 👆 Netflix | `select` |
 | ... | 还有 38 个 |
+
 </details>
 
 #### 📝 clash-fallback-all.yaml
 - **路径**: `liandu2024/clash-fallback-all.yaml` | **大小**: 18.6 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/liandu2024/clash-fallback-all.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -693,7 +749,7 @@
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (61个)</summary>
+<summary>🔎 策略组架构 (61个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -713,6 +769,7 @@
 | 👆 BiliBili | `select` |
 | 👆 YouTube | `select` |
 | ... | 还有 46 个 |
+
 </details>
 
 ---
@@ -721,14 +778,16 @@
 
 #### 📝 config.yaml
 - **路径**: `liuran001/config.yaml` | **大小**: 13.8 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/liuran001/config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 | Controller | :9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (29个)</summary>
+<summary>🔎 策略组架构 (29个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -748,6 +807,7 @@
 | 👆 TikTok | `select` |
 | 👆 Spotify | `select` |
 | ... | 还有 14 个 |
+
 </details>
 
 ---
@@ -756,13 +816,15 @@
 
 #### 📝 config.yaml
 - **路径**: `qichiyuhub/config.yaml` | **大小**: 12.8 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/qichiyuhub/config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 
 <details>
-<summary>🔎 策略组架构 (26个)</summary>
+<summary>🔎 策略组架构 (26个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -782,6 +844,7 @@
 | 👆 🇯🇵 日本节点 | `select` |
 | 👆 🇸🇬 狮城节点 | `select` |
 | ... | 还有 11 个 |
+
 </details>
 
 ---
@@ -790,14 +853,16 @@
 
 #### 📝 config.yaml
 - **路径**: `wanswu/config.yaml` | **大小**: 27.5 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/wanswu/config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 | Controller | 127.0.0.1:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (96个)</summary>
+<summary>🔎 策略组架构 (96个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -817,6 +882,7 @@
 | 👆 Microsoft | `select` |
 | 👆 OneDrive | `select` |
 | ... | 还有 81 个 |
+
 </details>
 
 ---
@@ -825,13 +891,15 @@
 
 #### 📝 mihomo_single.yaml
 - **路径**: `yyhhyyyyyy/mihomo_single.yaml` | **大小**: 17.8 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/yyhhyyyyyy/mihomo_single.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7897 | HTTP/SOCKS |
 
 <details>
-<summary>🔎 策略组架构 (55个)</summary>
+<summary>🔎 策略组架构 (55个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -851,17 +919,20 @@
 | 👆 🇫🇷 - Auto | `select` |
 | 👆 🇩🇪 - Auto | `select` |
 | ... | 还有 40 个 |
+
 </details>
 
 #### 📝 mihomo_multi.yaml
 - **路径**: `yyhhyyyyyy/mihomo_multi.yaml` | **大小**: 18.1 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/General_Config/yyhhyyyyyy/mihomo_multi.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7897 | HTTP/SOCKS |
 
 <details>
-<summary>🔎 策略组架构 (55个)</summary>
+<summary>🔎 策略组架构 (55个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -881,6 +952,7 @@
 | 👆 🇫🇷 - Auto | `select` |
 | 👆 🇩🇪 - Auto | `select` |
 | ... | 还有 40 个 |
+
 </details>
 
 ---

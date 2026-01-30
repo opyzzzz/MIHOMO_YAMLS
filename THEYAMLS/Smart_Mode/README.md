@@ -1,6 +1,6 @@
 # 📂 Smart 模式 / 路由专用 (Smart Mode)
 
-[🔙 返回主页](../README.md)
+[🔙 返回主页](../../README.md)
 
 > 🤖 **自动技术分析报告** | Auto-generated Technical Report
 
@@ -22,7 +22,9 @@
 
 #### 📝 OneSmart_Lite_Config.yaml
 - **路径**: `666OS/OneSmart_Lite_Config.yaml` | **大小**: 12.5 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Smart_Mode/666OS/OneSmart_Lite_Config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -33,7 +35,7 @@
 | Controller | 127.0.0.1:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (16个)</summary>
+<summary>🔎 策略组架构 (16个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -53,11 +55,14 @@
 | 🚀 韩国智能 | `smart` |
 | 🚀 美国智能 | `smart` |
 | ... | 还有 1 个 |
+
 </details>
 
 #### 📝 OneSmart_Config.yaml
 - **路径**: `666OS/OneSmart_Config.yaml` | **大小**: 20.1 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Smart_Mode/666OS/OneSmart_Config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -77,7 +82,7 @@
 | 👂 MIXED-AL | 50007 | mixed |
 
 <details>
-<summary>🔎 策略组架构 (31个)</summary>
+<summary>🔎 策略组架构 (31个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -97,6 +102,7 @@
 | 👆 脸书服务 | `select` |
 | 👆 国外流量 | `select` |
 | ... | 还有 16 个 |
+
 </details>
 
 ---
@@ -105,7 +111,9 @@
 
 #### 📝 MihomoSmartProMax.yaml
 - **路径**: `HenryChiao/MihomoSmartProMax.yaml` | **大小**: 25.1 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Smart_Mode/HenryChiao/MihomoSmartProMax.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -125,7 +133,7 @@
 | 👂 MIXED-AL | 50007 | mixed |
 
 <details>
-<summary>🔎 策略组架构 (41个)</summary>
+<summary>🔎 策略组架构 (41个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -145,11 +153,14 @@
 | 👆 新闻媒体 | `select` |
 | 👆 电报消息 | `select` |
 | ... | 还有 26 个 |
+
 </details>
 
 #### 📝 MihomoSmartProPlus.yaml
 - **路径**: `HenryChiao/MihomoSmartProPlus.yaml` | **大小**: 25.7 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Smart_Mode/HenryChiao/MihomoSmartProPlus.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -169,7 +180,7 @@
 | 👂 MIXED-AL | 50007 | mixed |
 
 <details>
-<summary>🔎 策略组架构 (41个)</summary>
+<summary>🔎 策略组架构 (41个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -189,11 +200,14 @@
 | 👆 新闻媒体 | `select` |
 | 👆 电报消息 | `select` |
 | ... | 还有 26 个 |
+
 </details>
 
 #### 📝 MihomoSmartAIO.yaml
 - **路径**: `HenryChiao/MihomoSmartAIO.yaml` | **大小**: 32.1 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Smart_Mode/HenryChiao/MihomoSmartAIO.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -213,7 +227,7 @@
 | 👂 MIXED-AL | 50007 | mixed |
 
 <details>
-<summary>🔎 策略组架构 (69个)</summary>
+<summary>🔎 策略组架构 (69个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -233,6 +247,7 @@
 | 👆 Max | `select` |
 | 👆 Prime Video | `select` |
 | ... | 还有 54 个 |
+
 </details>
 
 ---
@@ -241,13 +256,15 @@
 
 #### 📝 mihomo_smart.yaml
 - **路径**: `echs-top/mihomo_smart.yaml` | **大小**: 18.2 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Smart_Mode/echs-top/mihomo_smart.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Controller | 127.0.0.1:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (31个)</summary>
+<summary>🔎 策略组架构 (31个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -267,6 +284,7 @@
 | 👆 YOUTUBE | `select` |
 | 👆 AI | `select` |
 | ... | 还有 16 个 |
+
 </details>
 
 ---
@@ -275,7 +293,9 @@
 
 #### 📝 clash-fallback-smart-std.yaml
 - **路径**: `liandu2024/clash-fallback-smart-std.yaml` | **大小**: 17.7 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Smart_Mode/liandu2024/clash-fallback-smart-std.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -286,7 +306,7 @@
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (36个)</summary>
+<summary>🔎 策略组架构 (36个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -306,11 +326,14 @@
 | 👆 国外 | `select` |
 | 👆 国内 | `select` |
 | ... | 还有 21 个 |
+
 </details>
 
 #### 📝 clash-all-smart.yaml
 - **路径**: `liandu2024/clash-all-smart.yaml` | **大小**: 15.1 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Smart_Mode/liandu2024/clash-all-smart.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -321,7 +344,7 @@
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (38个)</summary>
+<summary>🔎 策略组架构 (38个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -341,11 +364,14 @@
 | 👆 HBO | `select` |
 | 👆 Spotify | `select` |
 | ... | 还有 23 个 |
+
 </details>
 
 #### 📝 clash-all-fallback-smart.yaml
 - **路径**: `liandu2024/clash-all-fallback-smart.yaml` | **大小**: 18.2 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Smart_Mode/liandu2024/clash-all-fallback-smart.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7893 | HTTP/SOCKS |
@@ -356,7 +382,7 @@
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (57个)</summary>
+<summary>🔎 策略组架构 (57个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -376,6 +402,7 @@
 | 👆 Netflix | `select` |
 | 👆 HBO | `select` |
 | ... | 还有 42 个 |
+
 </details>
 
 ---
@@ -384,13 +411,15 @@
 
 #### 📝 smart.yaml
 - **路径**: `qichiyuhub/smart.yaml` | **大小**: 13.0 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Smart_Mode/qichiyuhub/smart.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 
 <details>
-<summary>🔎 策略组架构 (28个)</summary>
+<summary>🔎 策略组架构 (28个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -410,6 +439,7 @@
 | 👆 🐟 漏网之鱼 | `select` |
 | 👆 🇭🇰 香港节点 | `select` |
 | ... | 还有 13 个 |
+
 </details>
 
 ---

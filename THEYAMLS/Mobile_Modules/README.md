@@ -1,6 +1,6 @@
 # 📂 Android 手机模块 (Mobile Modules)
 
-[🔙 返回主页](../README.md)
+[🔙 返回主页](../../README.md)
 
 > 🤖 **自动技术分析报告** | Auto-generated Technical Report
 
@@ -22,7 +22,9 @@
 
 #### 📝 config.yaml
 - **路径**: `AkashaProxy/config.yaml` | **大小**: 8.2 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Mobile_Modules/AkashaProxy/config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
@@ -31,7 +33,7 @@
 | Controller | 127.0.0.1:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (20个)</summary>
+<summary>🔎 策略组架构 (20个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -51,6 +53,7 @@
 | ♻️ 香港自动选择 | `url-test` |
 | ♻️ 台湾自动选择 | `url-test` |
 | ... | 还有 5 个 |
+
 </details>
 
 ---
@@ -59,7 +62,9 @@
 
 #### 📝 config.yaml
 - **路径**: `BoxProxy/config.yaml` | **大小**: 4.2 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Mobile_Modules/BoxProxy/config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
@@ -68,13 +73,14 @@
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (3个)</summary>
+<summary>🔎 策略组架构 (3个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
 | 👆 国外代理 | `select` |
 | 👆 国内直连 | `select` |
 | 👆 漏网之鱼 | `select` |
+
 </details>
 
 ---
@@ -83,14 +89,16 @@
 
 #### 📝 config.yaml
 - **路径**: `ClashMix/config.yaml` | **大小**: 6.5 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Mobile_Modules/ClashMix/config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (5个)</summary>
+<summary>🔎 策略组架构 (5个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -99,6 +107,7 @@
 | 🚀 智能选择 | `smart` |
 | 👆 广告 | `select` |
 | 👆 中国网站 | `select` |
+
 </details>
 
 ---
@@ -107,7 +116,9 @@
 
 #### 📝 config.yaml
 - **路径**: `Surfing/config.yaml` | **大小**: 19.0 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Mobile_Modules/Surfing/config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
@@ -116,7 +127,7 @@
 | Controller | 0.0.0.0:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (34个)</summary>
+<summary>🔎 策略组架构 (34个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -136,6 +147,7 @@
 | 👆 Netflix | `select` |
 | 👆 Google | `select` |
 | ... | 还有 19 个 |
+
 </details>
 
 ---

@@ -1,6 +1,6 @@
 # 📂 Mihomo 官方示例 (Official)
 
-[🔙 返回主页](../README.md)
+[🔙 返回主页](../../README.md)
 
 > 🤖 **自动技术分析报告** | Auto-generated Technical Report
 
@@ -22,14 +22,16 @@
 
 #### 📝 geox_config.yaml
 - **路径**: `Metacubex/geox_config.yaml` | **大小**: 5.2 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Official_Examples/Metacubex/geox_config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 | Controller | 127.0.0.1:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (20个)</summary>
+<summary>🔎 策略组架构 (20个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -49,18 +51,21 @@
 | 👆 台湾 | `select` |
 | 👆 日本 | `select` |
 | ... | 还有 5 个 |
+
 </details>
 
 #### 📝 rule-set_config.yaml
 - **路径**: `Metacubex/rule-set_config.yaml` | **大小**: 7.7 KB | **[Raw](https://github.com/HenryChiao/mihomo_yamls/blob/main/THEYAMLS/Official_Examples/Metacubex/rule-set_config.yaml)**
-- **端口配置**:
+
+**端口配置**:
+
 | 类型 | 端口 | 说明 |
 | :--- | :--- | :--- |
 | Mixed (混合) | 7890 | HTTP/SOCKS |
 | Controller | 127.0.0.1:9090 | 控制面板 |
 
 <details>
-<summary>🔎 策略组架构 (20个)</summary>
+<summary>🔎 策略组架构 (20个) - 点击展开</summary>
 
 | 策略组 | 类型 |
 | :--- | :--- |
@@ -80,6 +85,7 @@
 | 👆 台湾 | `select` |
 | 👆 日本 | `select` |
 | ... | 还有 5 个 |
+
 </details>
 
 ---
