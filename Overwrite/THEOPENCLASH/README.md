@@ -1,12 +1,32 @@
-# 📦 OpenClash 覆写配置文件总览
-
-> 🤖 **自动生成** | 基于 THEYAMLS 配置文件自动生成
-
-## 📂 分类目录
-
-- 📁 **[General_Config](./General_Config/README.md)**
-- 📁 **[Mobile_Modules](./Mobile_Modules/README.md)**
-- 📁 **[Official_Examples](./Official_Examples/README.md)**
-- 📁 **[Smart_Mode](./Smart_Mode/README.md)**
-
-[🏠 返回项目主页](../../README.md)
+O
+v
+e
+r
+w
+r
+i
+t
+e
+/
+T
+H
+E
+O
+P
+E
+N
+C
+L
+A
+S
+H
+/
+R
+E
+A
+D
+M
+E
+.
+m
+d

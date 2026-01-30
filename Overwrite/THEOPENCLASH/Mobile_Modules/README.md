@@ -1,18 +1,21 @@
-# 📁 Android 手机模块
+# 📁 Mobile_Modules
 
-## 📋 配置文件列表
+> Mobile Modules - For rooted Android
 
-| 文件路径 | 说明 |
+## 📋 Config Files
+
+| File Path | Description |
 | :--- | :--- |
-| `AkashaProxy/config.conf` | OpenClash 覆写配置 |
-| `BoxProxy/config.conf` | OpenClash 覆写配置 |
-| `ClashMix/config.conf` | OpenClash 覆写配置 |
-| `Surfing/config.conf` | OpenClash 覆写配置 |
+| `AkashaProxy/config.conf` | OpenClash Overwrite Config |
+| `BoxProxy/config.conf` | OpenClash Overwrite Config |
+| `ClashMix/config.conf` | OpenClash Overwrite Config |
+| `Surfing/config.conf` | OpenClash Overwrite Config |
 
-## 📖 使用方法
-1. 在 OpenClash 插件中选择 **配置文件订阅**
-2. 将对应的 `.conf` 文件 Raw 链接填入订阅地址
-3. 配置环境变量 `EN_KEY1`、`EN_KEY2` 等为你的机场订阅链接
-4. 保存并更新
+## 📖 Usage
 
-[🔙 返回 OpenClash 总览](../README.md)
+1. Open OpenClash Plugin -> Config Subscribe
+2. Paste the Raw URL of the `.conf` file
+3. Set env variables `EN_KEY1`, `EN_KEY2`... to your subscription URLs
+4. Save and Update
+
+[🔙 Back to Main](../README.md)
