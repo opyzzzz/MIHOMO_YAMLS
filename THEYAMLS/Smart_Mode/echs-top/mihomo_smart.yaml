@@ -25,7 +25,6 @@ mode: rule
 log-level: error
 unified-delay: true
 tcp-concurrent: true
-find-process-mode: off
 disable-keep-alive: false
 keep-alive-interval: 15
 keep-alive-idle: 300
