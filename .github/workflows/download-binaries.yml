@@ -12,7 +12,7 @@ on:
         required: true
         type: string
       version:
-        description: '版本号'
+        description: '版本号 (从version.txt获取的确切版本字符串)'
         required: true
         type: string
 
@@ -22,8 +22,8 @@ jobs:
     strategy:
       matrix:
         include:
-          # Linux平台（所有mihomo版本都支持）
-          - { platform: linux, arch: amd64-v1 }
+          # Linux
+          - { platform: linux, arch: amd64-v1 } # 文件名通常为 amd64
           - { platform: linux, arch: amd64-v3 }
           - { platform: linux, arch: armv5 }
           - { platform: linux, arch: armv6 }
@@ -32,135 +32,143 @@ jobs:
           - { platform: linux, arch: mips-softfloat }
           - { platform: linux, arch: mipsle-softfloat }
           - { platform: linux, arch: mipsle-hardfloat }
-          # Windows平台（所有mihomo版本都支持）
+          # Windows
           - { platform: windows, arch: amd64-v1 }
           - { platform: windows, arch: amd64-v3 }
           - { platform: windows, arch: arm64 }
-          # macOS平台（Meta和Alpha支持，Smart可能不支持）
+          # macOS (Smart版本通常没有macOS/Android，脚本里会容错)
           - { platform: darwin, arch: amd64 }
           - { platform: darwin, arch: arm64 }
-          # Android平台（仅Meta和Alpha支持，Smart不支持）
+          # Android
           - { platform: android, arch: arm64 }
-          - { platform: android, arch: armv7 }
-          - { platform: android, arch: amd64 }
       fail-fast: false
     
     steps:
-      - name: Checkout主仓库（获取处理脚本）
+      - name: Checkout主仓库
         uses: actions/checkout@v4
 
       - name: 下载并处理
         run: |
           mkdir -p ./artifacts ./tmp
           
-          # 设置下载URL
+          # === 1. 架构名称标准化 ===
+          # 矩阵中使用 amd64-v1 是为了区分 v3，但在文件名中通常只是 amd64
+          FILE_ARCH="${{ matrix.arch }}"
+          if [[ "$FILE_ARCH" == "amd64-v1" ]]; then
+            FILE_ARCH="amd64"
+          fi
+          
+          # === 2. 构造文件名和 URL ===
+          # 通用文件名前缀: mihomo-{platform}-{arch}
+          FILE_PREFIX="mihomo-${{ matrix.platform }}-${FILE_ARCH}"
+          
           case "${{ inputs.variant }}" in
             meta)
-              BASE_URL="https://github.com/MetaCubeX/mihomo/releases/download/${{ inputs.version }}"
+              # 正式版：Tag 和 Version 是一样的
+              DOWNLOAD_URL="https://github.com/MetaCubeX/mihomo/releases/download/${{ inputs.version }}"
+              # 文件名后缀需适配版本
+              FN_VERSION="${{ inputs.version }}"
               ;;
             alpha)
-              BASE_URL="https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha"
+              # Alpha版：固定 Tag 为 Prerelease-Alpha
+              DOWNLOAD_URL="https://github.com/MetaCubeX/mihomo/releases/download/Prerelease-Alpha"
+              # 文件名使用从 version.txt 获取的真实版本 (e.g., alpha-xxxx)
+              FN_VERSION="${{ inputs.version }}"
               ;;
             smart)
-              BASE_URL="https://github.com/vernesong/mihomo/releases/download/${{ inputs.version }}"
+              # Smart版：固定 Tag 为 Prerelease-Alpha
+              DOWNLOAD_URL="https://github.com/vernesong/mihomo/releases/download/Prerelease-Alpha"
+              # 文件名使用从 version.txt 获取的真实版本
+              FN_VERSION="${{ inputs.version }}"
               ;;
             *)
               echo "未知变体: ${{ inputs.variant }}"
               exit 1
               ;;
           esac
+
+          echo "🔍 准备下载: ${{ inputs.project }} (${{ inputs.variant }})"
+          echo "🏷️  Tag/Base: $DOWNLOAD_URL"
+          echo "🔢 Version:  $FN_VERSION"
+          echo "💻 Platform: ${{ matrix.platform }} / $FILE_ARCH"
+
+          # === 3. 执行下载 ===
+          set +e # 允许下载失败以便处理不同平台的扩展名差异
+          SUCCESS=0
           
-          # 构建文件名前缀
-          FILE_PREFIX="mihomo-${{ matrix.platform }}-${{ matrix.arch }}"
-          
-          # 尝试下载，失败则记录但不终止
-          set +e
-          
-          if [[ "${{ matrix.platform }}" == "linux" ]]; then
-            URL="${BASE_URL}/${FILE_PREFIX}-${{ inputs.version }}.gz"
-            echo "尝试下载: $URL"
-            curl -fSL --max-time 300 "$URL" | gunzip -c > ./tmp/mihomo 2>/dev/null
-            if [[ $? -eq 0 && -s ./tmp/mihomo ]]; then
+          # --- Linux / Android (通常是 .gz) ---
+          if [[ "${{ matrix.platform }}" == "linux" || "${{ matrix.platform }}" == "android" ]]; then
+            # 拼接目标文件名: mihomo-linux-amd64-{version}.gz
+            URL="${DOWNLOAD_URL}/${FILE_PREFIX}-${FN_VERSION}.gz"
+            echo "⬇️  尝试下载: $URL"
+            
+            curl -fSL --connect-timeout 10 --max-time 300 "$URL" -o ./tmp/mihomo.gz
+            if [[ $? -eq 0 && -s ./tmp/mihomo.gz ]]; then
+              gunzip -c ./tmp/mihomo.gz > ./tmp/mihomo
               chmod +x ./tmp/mihomo
               SOURCE_FILE="./tmp/mihomo"
-            else
-              echo "警告: Linux ${{ matrix.arch }} 下载失败或文件为空，跳过"
-              exit 0
+              SUCCESS=1
             fi
             
+          # --- Windows (通常是 .zip) ---
           elif [[ "${{ matrix.platform }}" == "windows" ]]; then
-            URL="${BASE_URL}/${FILE_PREFIX}-${{ inputs.version }}.zip"
-            echo "尝试下载: $URL"
-            curl -fSL --max-time 300 -o ./tmp/download.zip "$URL" 2>/dev/null
+            URL="${DOWNLOAD_URL}/${FILE_PREFIX}-${FN_VERSION}.zip"
+            echo "⬇️  尝试下载: $URL"
+            
+            curl -fSL --connect-timeout 10 --max-time 300 "$URL" -o ./tmp/download.zip
             if [[ $? -eq 0 && -s ./tmp/download.zip ]]; then
-              unzip -q ./tmp/download.zip -d ./tmp/ 2>/dev/null
+              unzip -q ./tmp/download.zip -d ./tmp/
+              # 查找解压出的 exe 文件
               SOURCE_FILE=$(find ./tmp -name "*.exe" | head -n1)
-              if [[ -z "$SOURCE_FILE" ]]; then
-                echo "警告: Windows ${{ matrix.arch }} 解压后找不到exe，跳过"
-                exit 0
-              fi
-            else
-              echo "警告: Windows ${{ matrix.arch }} 下载失败，跳过"
-              exit 0
+              SUCCESS=1
             fi
-            
+
+          # --- macOS (可能是 .gz 或 .zip) ---
           elif [[ "${{ matrix.platform }}" == "darwin" ]]; then
-            # macOS可能是gz或zip格式，先尝试gz
-            URL="${BASE_URL}/${FILE_PREFIX}-${{ inputs.version }}.gz"
-            echo "尝试下载: $URL"
-            curl -fSL --max-time 300 "$URL" | gunzip -c > ./tmp/mihomo 2>/dev/null
-            if [[ $? -eq 0 && -s ./tmp/mihomo ]]; then
-              chmod +x ./tmp/mihomo
-              SOURCE_FILE="./tmp/mihomo"
-            else
-              # 尝试zip格式
-              URL="${BASE_URL}/${FILE_PREFIX}-${{ inputs.version }}.zip"
-              echo "尝试下载zip: $URL"
-              curl -fSL --max-time 300 -o ./tmp/download.zip "$URL" 2>/dev/null
-              if [[ $? -eq 0 && -s ./tmp/download.zip ]]; then
-                unzip -q ./tmp/download.zip -d ./tmp/ 2>/dev/null
-                SOURCE_FILE=$(find ./tmp -type f ! -name "*.zip" | head -n1)
-                if [[ -n "$SOURCE_FILE" ]]; then
-                  chmod +x "$SOURCE_FILE" 2>/dev/null || true
-                else
-                  echo "警告: macOS ${{ matrix.arch }} 解压后找不到文件，跳过"
-                  exit 0
-                fi
-              else
-                echo "警告: macOS ${{ matrix.arch }} 下载失败，跳过"
-                exit 0
-              fi
-            fi
+            # 先试 .gz
+            URL="${DOWNLOAD_URL}/${FILE_PREFIX}-${FN_VERSION}.gz"
+            echo "⬇️  尝试下载(gz): $URL"
+            curl -fSL --connect-timeout 10 --max-time 300 "$URL" -o ./tmp/mihomo.gz
             
-          elif [[ "${{ matrix.platform }}" == "android" ]]; then
-            URL="${BASE_URL}/${FILE_PREFIX}-${{ inputs.version }}.gz"
-            echo "尝试下载: $URL"
-            curl -fSL --max-time 300 "$URL" | gunzip -c > ./tmp/mihomo 2>/dev/null
-            if [[ $? -eq 0 && -s ./tmp/mihomo ]]; then
+            if [[ $? -eq 0 && -s ./tmp/mihomo.gz ]]; then
+              gunzip -c ./tmp/mihomo.gz > ./tmp/mihomo
               chmod +x ./tmp/mihomo
               SOURCE_FILE="./tmp/mihomo"
+              SUCCESS=1
             else
-              echo "警告: Android ${{ matrix.arch }} 下载失败，跳过"
-              exit 0
+              # 失败则试 .zip
+              URL="${DOWNLOAD_URL}/${FILE_PREFIX}-${FN_VERSION}.zip"
+              echo "⬇️  尝试下载(zip): $URL"
+              curl -fSL --connect-timeout 10 --max-time 300 "$URL" -o ./tmp/download.zip
+              if [[ $? -eq 0 && -s ./tmp/download.zip ]]; then
+                unzip -q ./tmp/download.zip -d ./tmp/
+                SOURCE_FILE=$(find ./tmp -type f ! -name "*.zip" | head -n1)
+                chmod +x "$SOURCE_FILE"
+                SUCCESS=1
+              fi
             fi
           fi
           
-          set -e
-          
-          # 验证源文件
-          if [[ -z "$SOURCE_FILE" ]] || [[ ! -f "$SOURCE_FILE" ]]; then
-            echo "错误: 源文件不存在"
+          set -e # 恢复错误中断
+
+          # === 4. 验证与处理 ===
+          if [[ $SUCCESS -eq 1 && -f "$SOURCE_FILE" ]]; then
+            echo "✅ 下载成功"
+            
+            # 调用 artifact-handler.sh 进行重命名和移动
+            # 注意：这里传递原始的 amd64-v1 给 handler，以便生成区分 v1/v3 的文件名
+            bash .github/scripts/lib/artifact-handler.sh \
+              "$SOURCE_FILE" \
+              "${{ inputs.project }}" \
+              "${{ inputs.variant }}" \
+              "${{ matrix.platform }}" \
+              "${{ matrix.arch }}" \
+              "./artifacts"
+          else
+            echo "⚠️  下载失败或该变体不支持此平台 ($URL)"
+            # 不报错退出，允许矩阵中其他任务继续
             exit 0
           fi
-          
-          # 调用处理脚本
-          bash .github/scripts/lib/artifact-handler.sh \
-            "$SOURCE_FILE" \
-            "${{ inputs.project }}" \
-            "${{ inputs.variant }}" \
-            "${{ matrix.platform }}" \
-            "${{ matrix.arch }}" \
-            "./artifacts"
 
       - name: 上传产物
         uses: actions/upload-artifact@v4
