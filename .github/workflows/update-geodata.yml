@@ -1,0 +1,124 @@
+name: Update All GeoData Assets
+
+on:
+  workflow_dispatch: # 手动触发
+  schedule:
+    - cron: '0 20 * * *' # 每天北京时间凌晨 4 点 (UTC 20:00)
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/update-geodata.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  download-sort-push:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 使用 GH CLI 必须配置 Token
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Download and Sort Assets
+        run: |
+          # 定义整理函数：根据文件名移动到对应子文件夹
+          function sort_files() {
+            local author_dir=$1
+            cd "$author_dir" || return
+
+            # 创建分类文件夹
+            mkdir -p geoip geosite asn uncategorized
+
+            # 遍历当前目录下所有文件 (排除目录本身)
+            find . -maxdepth 1 -type f | while read file; do
+              filename=$(basename "$file")
+              # 转换为小写以便匹配
+              lower_name=$(echo "$filename" | tr '[:upper:]' '[:lower:]')
+
+              if [[ "$lower_name" == *"geoip"* ]] || [[ "$lower_name" == *".mmdb"* ]]; then
+                mv "$filename" geoip/
+              elif [[ "$lower_name" == *"geosite"* ]] || [[ "$lower_name" == *"dlc.dat"* ]]; then
+                mv "$filename" geosite/
+              elif [[ "$lower_name" == *"asn"* ]]; then
+                mv "$filename" asn/
+              else
+                # 剩下的放入未分类 (通常是校验文件或说明文档)
+                mv "$filename" uncategorized/
+              fi
+            done
+            
+            # 删除空文件夹 (如果某个分类没有文件)
+            rmdir geoip geosite asn uncategorized 2>/dev/null || true
+            cd - > /dev/null
+          }
+
+          # 创建临时工作区
+          mkdir -p workspace
+          cd workspace
+
+          echo "🚀 开始批量下载..."
+
+          # --- 1. MetaCubeX (Tag: latest) ---
+          echo "⬇️ Downloading MetaCubeX..."
+          mkdir -p MetaCubeX
+          gh release download latest --repo MetaCubeX/meta-rules-dat --dir MetaCubeX --pattern "*" --clobber
+          sort_files "$(pwd)/MetaCubeX"
+
+          # --- 2. DustinWin (Tag: mihomo-geodata) ---
+          echo "⬇️ Downloading DustinWin..."
+          mkdir -p DustinWin
+          gh release download mihomo-geodata --repo DustinWin/ruleset_geodata --dir DustinWin --pattern "*" --clobber
+          sort_files "$(pwd)/DustinWin"
+
+          # --- 3. NobyDa (Tag: latest) ---
+          echo "⬇️ Downloading NobyDa..."
+          mkdir -p NobyDa
+          gh release download --repo NobyDa/geoip --dir NobyDa --pattern "*" --clobber
+          sort_files "$(pwd)/NobyDa"
+
+          # --- 4. Loyalsoldier (Tag: latest, Multi-repo) ---
+          echo "⬇️ Downloading Loyalsoldier..."
+          mkdir -p Loyalsoldier
+          # 下载 repo 1: v2ray-rules-dat (通常包含最全的 dat)
+          gh release download --repo Loyalsoldier/v2ray-rules-dat --dir Loyalsoldier --pattern "*" --clobber
+          # 下载 repo 2: geoip (可能会覆盖上面的同名文件，以最后下载的为准)
+          gh release download --repo Loyalsoldier/geoip --dir Loyalsoldier --pattern "*" --clobber
+          sort_files "$(pwd)/Loyalsoldier"
+
+          # --- 5. xream (Tag: latest) ---
+          echo "⬇️ Downloading xream..."
+          mkdir -p xream
+          gh release download --repo xream/geoip --dir xream --pattern "*" --clobber
+          sort_files "$(pwd)/xream"
+
+          echo "✅ 所有文件下载并分类完毕。"
+
+      - name: Push to GeoData Branch
+        run: |
+          # 准备推送环境
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+
+          # 切换到孤儿分支 GeoData (无历史记录，纯净模式)
+          git checkout --orphan GeoData
+          
+          # 清空暂存区和当前目录
+          git rm -rf .
+          
+          # 将 workspace 中的内容移出来
+          cp -r workspace/* .
+          rm -rf workspace
+
+          # 添加文件
+          git add .
+
+          # 检查是否有文件变化
+          if git diff --staged --quiet; then
+            echo "没有文件更新，跳过提交。"
+          else
+            git commit -m "Auto-update assets: $(date +'%Y-%m-%d %H:%M:%S')"
+            git push -f origin GeoData
+          fi
