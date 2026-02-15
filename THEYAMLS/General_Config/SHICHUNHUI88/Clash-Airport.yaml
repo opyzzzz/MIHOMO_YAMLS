@@ -1,0 +1,301 @@
+# 1先下载编辑器，苹果用Textastic Code编辑，电脑用VS Code编辑，安卓用Acode编辑
+# 2把我的配置全部复制到编辑器里面，把下面第8行,机场链接 url："这里的机场链接换成自己的机场链接"
+# 3然后保存“名称.yaml”文件格式导入软件就可以使用了（只支持mihomo核）
+
+# 这是机场配置，可以将下面的机场url链接换成自己的机场链接，保留引号符
+p: &p {type: http, interval: 3600, proxy: "🌍全球加速", health-check: {enable: true, url: "https://www.gstatic.com/generate_204", interval: 300}}
+proxy-providers:
+  机场: {<<: *p, url: "https://cdn.gh-proxy.org/https://raw.githubusercontent.com/free18/v2ray/refs/heads/main/c.yaml"}
+
+port: 0
+socks-port: 0
+redir-port: 0
+tproxy-port: 0
+mixed-port: 0
+mode: rule
+redir-mode: tproxy
+log-level: warning
+ipv6: true
+etag-support: true
+disable-keep-alive: false
+find-process-mode: always
+global-client-fingerprint: chrome
+unified-delay: true
+tcp-concurrent: true
+inbound-tfo: true
+inbound-mptcp: false
+udp-fallback-policy: slowest
+allow-lan: true
+keep-alive-idle: 300
+keep-alive-interval: 30
+bind-address: "*"
+authentication: ["meta:88888888"]
+skip-auth-prefixes: ["127.0.0.1/8", "::1/128"]
+lan-allowed-ips: ["0.0.0.0/0", "::/0"]
+lan-disallowed-ips: []
+global-ua: "Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0 Mobile Safari/537.36"
+profile: {store-selected: true, store-fake-ip: true, tracing: true, reload-config-on-change: true, keep-alive-interval: 300}
+ntp: {enable: true, server: time.apple.com, port: 123, interval: 30, dialer-proxy: "", write-to-system: false}
+
+external-controller-cors:
+  allow-origins: ["*"]
+  allow-private-network: true
+external-controller: 127.0.0.1:9092
+secret: "88888888"
+external-ui: ui
+external-ui-name: zashboard
+external-ui-url: "https://codeload.github.com/Zephyruso/zashboard/zip/refs/heads/gh-pages"
+
+listeners:
+  - {name: mixed-in, type: mixed, port: 7893, listen: 0.0.0.0, udp: true}
+  - {name: socks-in, type: socks, port: 7891, listen: 0.0.0.0, udp: true}
+  - {name: http-in, type: http, port: 7896, listen: 0.0.0.0, udp: false} 
+  - {name: redir-in, type: redir, port: 7892, listen: 0.0.0.0, udp: true}
+  - {name: tproxy-in, type: tproxy, port: 7894, listen: 0.0.0.0, udp: true}
+
+tun:
+  enable: true
+  device: mihomo
+  stack: mixed
+  mtu: 1500
+  inet4-address: [172.18.0.1/30]
+  inet6-address: [fdfe:dcba:9876::1/126]
+  strict-route: true
+  dns-hijack: ["any:53", "tcp://any:53"]
+  auto-route: true
+  auto-redirect: true
+  auto-detect-interface: true
+  gso: true
+  gso-max-size: 65536
+  endpoint-independent-nat: true
+  udp-timeout: 60
+  disable-icmp-forwarding: true
+  route-exclude-address-set: ["rule-set:cn_dns_cdn", "geoip:cn", "geoip:private"]
+  route-exclude-cidr: ["192.168.0.0/16", "10.0.0.0/8", "172.16.0.0/12"]  
+  
+geodata-mode: true
+geodata-loader: standard
+geosite-matcher: succinct
+geox-url: {geoip: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/geoip.dat", geosite: "https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/geosite.dat", mmdb: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/GeoLite2-Country.mmdb", asn: "https://cdn.jsdelivr.net/gh/Loyalsoldier/geoip@release/GeoLite2-ASN.mmdb"}
+geo-auto-update: true
+geo-update-interval: 24
+
+dns-anchor:
+  cn-dns: &cn-dns ["https://dns.alidns.com/dns-query", "https://doh.pub/dns-query"]
+  global-dns: &global-dns ["https://1.1.1.1/dns-query", "https://dns.google/dns-query", "https://dns.quad9.net/dns-query", "tls://cloudflare-dns.com:853", "tls://dns.google:853"]
+
+dns:
+  enable: true
+  listen: 0.0.0.0:1053
+  ipv6: true
+  enhanced-mode: fake-ip
+  cache-algorithm: arc
+  cache: {enable: true, size: 4096, expired: 180}
+  fake-ip-range: 198.18.0.0/16
+  prefer-h3: true
+  tls-version: {min: 1.2, max: 1.3}
+  h3-grace-period: 2s
+  use-hosts: true
+  use-system-hosts: true
+  respect-rules: true
+  direct-nameserver-follow-policy: true
+  fake-ip-filter-mode: blacklist
+  fake-ip-filter: ["localhost","+.lan","+.local","+.arpa","time.*.com","time.*.apple.com","pool.ntp.org","+.ntp.org","captive.apple.com","connectivitycheck.gstatic.com","msftconnecttest.com","msftncsi.com","+.srv.nintendo.net","+.stun.playstation.net","+.xboxlive.com", "openai.com", "*.openai.com","*.japps.cn","*.samsung.com"]
+  direct-nameserver: ["system"]
+  default-nameserver: ["223.5.5.5", "119.29.29.29", "114.114.114.114", "180.76.76.76"]
+  nameserver: ["https://dns.alidns.com/dns-query", "https://1.1.1.1/dns-query", "https://doh.pub/dns-query", "https://dns.google/dns-query", "https://dns.quad9.net/dns-query", "https://dns.adguard.com/dns-query", "tls://cloudflare-dns.com:853", "tls://dns.google:853"]
+  proxy-server-nameserver: ["https://1.1.1.1/dns-query", "https://dns.google/dns-query", "https://cloudflare-dns.com/dns-query", "https://dns.quad9.net/dns-query", "https://public.dns.iij.jp/dns-query", "tls://cloudflare-dns.com:853", "tls://dns.google:853"]  
+  fallback: ["https://dns.google/dns-query", "https://1.1.1.1/dns-query", "https://dns.alidns.com/dns-query", "https://public.dns.iij.jp/dns-query", "https://jp.tdns.dev/dns-query", "tls://dns.google:853"]
+  fallback-filter: {geoip: true, geoip-code: CN, geosite: [gfw], ipcidr: ["240.0.0.0/4"]}
+  nameserver-policy:
+    "rule-set:abroad_dns_cdn": *global-dns
+    "rule-set:Google-zj": *global-dns
+    "rule-set:OpenAI-zj": *global-dns
+    "rule-set:Telegram-zj": *global-dns
+    "rule-set:Microsoft": *global-dns
+    "rule-set:gfw": *global-dns
+    "rule-set:proxy": *global-dns
+    "rule-set:tld-not-cn": *global-dns
+    "rule-set:GitHub-zj": *global-dns
+    "rule-set:TikTok-zj": *global-dns
+    "rule-set:YouTube": *global-dns
+    "rule-set:Facebook-zj": *global-dns
+    "rule-set:Netflix": *global-dns
+    "rule-set:WildRift-zj": *global-dns
+    "rule-set:games": *global-dns
+    "rule-set:Apple": *global-dns
+    "rule-set:icloud": *global-dns
+    "geosite:google": *global-dns
+    "geosite:openai": *global-dns
+    "geosite:microsoft": *global-dns
+    "geosite:telegram": *global-dns
+    "geosite:tiktok": *global-dns
+    "geosite:facebook": *global-dns
+    "geosite:instagram": *global-dns
+    "geosite:whatsapp": *global-dns
+    "geosite:twitter": *global-dns
+    "geosite:gfw": *global-dns
+    "geosite:greatfire": *global-dns
+    "geosite:geolocation-!cn": *global-dns
+    "rule-set:douyin-zj": *cn-dns
+    "geosite:douyin": *cn-dns
+    "rule-set:cn_dns_cdn": *cn-dns
+    "rule-set:private": *cn-dns
+    "rule-set:direct": *cn-dns
+    "rule-set:Agora-zj": *cn-dns
+    "rule-set:applications": *cn-dns
+    "geosite:alibaba": *cn-dns
+    "geosite:tencent": *cn-dns
+    "geosite:cn": *cn-dns
+
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  sniff: {HTTP: {ports: [80, 8080-8880], override-destination: true}, TLS: {ports: [443, 8443]}, QUIC: {ports: [443, 8443]}}
+  force-domain: ["+.cloudflare.net","+.akamaized.net","+.akamai.net","+.fastly.net","+.cloudfront.net","+.googlevideo.com","+.googlecdn.com","+.ytimg.com","+.youtube.com","+.netflix.com","+.instagram.com","+.tiktokcdn.com","+.tiktokv.com","+.douyin.com","+.douyincdn.com","+.telegram.org","+.t.me","+.tdesktop.com","+.cdn-telegram.org","+.telegram-cdn.org","+.cdn.telegram.org"]  
+  skip-domain: ["localhost","+.lan","+.local","+.arpa","+.invalid","+.test","+.pvp.net","+.riotgames.com","+.openai.com", "+.chat.openai.com", "+.api.openai.com", "geosite:alibaba","geosite:tencent","geosite:cn","rule-set:cn_dns_cdn","rule-set:private","rule-set:direct","rule-set:applications","rule-set:Agora-zj"] 
+  skip-src-address: ["127.0.0.0/8","10.0.0.0/8","172.16.0.0/12","192.168.0.0/16","::1/128","fc00::/7","fe80::/10"]
+  skip-dst-address: ["127.0.0.0/8","10.0.0.0/8","172.16.0.0/12","192.168.0.0/16","::1/128","fc00::/7","fe80::/10"]
+
+# 面板按键，代理出口基本都经过🌍全球加速，可以自行设置
+proxy-groups:
+  - {name: "🌍全球加速", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Global.png, proxies: ["♻️随机"], include-all: true, exclude-type: direct, filter: "^(.*)", url: https://www.gstatic.com/generate_204, interval: 120, timeout: 5000}
+  - {name: "♻️随机", type: url-test, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Bypass.png, include-all: true, exclude-type: direct, filter: "^(.*)", url: "https://www.gstatic.com/generate_204", interval: 120, tolerance: 30, timeout: 5000, hidden: true}
+  - {name: "🎷抖音", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok.png, proxies: ["🌍全球加速","♻️随机","🎯直连"], include-all: true, exclude-type: direct, filter: "^(.*)"}
+  - {name: "🎬TikTok", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/TikTok_2.png, proxies: ["🌍全球加速","♻️随机","🎯直连"], include-all: true, exclude-type: direct, filter: "^(.*)"}
+  - {name: "🎮国际游戏", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Game.png, proxies: ["🌍全球加速","♻️随机","🎯直连"], include-all: true, exclude-type: direct, filter: "^(🇭🇰|香港|🇯🇵|日本|🇸🇬|新加坡|🇰🇷|韩国|🇹🇼|台湾|🇻🇳|越南)"}
+  - {name: "💻Telegram", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Telegram.png, proxies: ["🌍全球加速","♻️随机","🎯直连"], include-all: true, exclude-type: direct, filter: "^(.*)"}
+  - {name: "🧠OpenAI", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/ChatGPT.png, proxies: ["🌍全球加速","♻️随机","🎯直连"], include-all: true, exclude-type: direct, filter: "^(.*)"}
+  - {name: "😊微软服务", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Microsoft.png, proxies: ["🌍全球加速","♻️随机","🎯直连"], include-all: true, exclude-type: direct, filter: "^(.*)"}
+  - {name: "🌐Google服务", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Google_Search.png, proxies: ["🌍全球加速","♻️随机","🎯直连"], include-all: true, exclude-type: direct, filter: "^(.*)"}
+  - {name: "📺国际流媒体", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Facebook.png, proxies: ["🌍全球加速","♻️随机","🎯直连"], include-all: true, exclude-type: direct, filter: "^(.*)"}
+  - {name: "🍎苹果服务", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Apple.png, proxies: ["🌍全球加速","♻️随机","🎯直连"], include-all: true, exclude-type: direct, filter: "^(.*)"}
+  - {name: "⛩️国内网站", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/China.png, proxies: ["🎯直连","🌍全球加速"]}
+  - {name: "🎯直连", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/China_Map.png, proxies: ["DIRECT","🌍全球加速"], url: "http://connect.rom.miui.com/generate_204"}
+  - {name: "🤡漏网之鱼", type: select, icon: https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Final.png, proxies: ["🌍全球加速","🎯直连"]}
+
+tunnels:
+  - {network: [tcp, udp], address: 127.0.0.1:7788, target: jp1.wildrift.riotgames.com:443, proxy: "🎮国际游戏"}
+  - {network: [tcp, udp], address: 127.0.0.1:7789, target: jp1.pvp.net:443, proxy: "🎮国际游戏"}
+  - {network: [tcp, udp], address: 127.0.0.1:9000, target: 149.154.167.91:443, proxy: "💻Telegram"}
+  - {network: [tcp, udp], address: 127.0.0.1:9001, target: 149.154.167.92:443, proxy: "💻Telegram"}
+  - {network: [tcp, udp], address: 127.0.0.1:9002, target: 149.154.175.100:443, proxy: "💻Telegram"}
+  - {network: [tcp, udp], address: 127.0.0.1:7999, target: api.openai.com:443, proxy: "🧠OpenAI"}
+  - {network: [tcp, udp], address: 127.0.0.1:7443, target: chat.openai.com:443, proxy: "🧠OpenAI"}
+  - {network: [tcp, udp], address: 127.0.0.1:7700, target: www.google.com:443, proxy: "🌐Google服务"}
+  - {network: [tcp, udp], address: 127.0.0.1:7701, target: accounts.google.com:443, proxy: "🌐Google服务"}
+  - {network: [tcp, udp], address: 127.0.0.1:7702, target: www.googleapis.com:443, proxy: "🌐Google服务"}
+
+rules:
+  - DOMAIN,report-v2.samsung.japps.cn,🌍全球加速
+  # 1. 去广告
+  - RULE-SET,advertising,REJECT
+  - RULE-SET,reject,REJECT
+  - GEOSITE,category-ads-all,REJECT
+  # 2. 国外规则集
+  - RULE-SET,douyin-zj,🎷抖音
+  - RULE-SET,Google-zj,🌐Google服务
+  - RULE-SET,OpenAI-zj,🧠OpenAI
+  - RULE-SET,Telegram-zj,💻Telegram
+  - RULE-SET,GitHub-zj,😊微软服务
+  - RULE-SET,Microsoft,😊微软服务
+  - RULE-SET,TikTok-zj,🎬TikTok
+  - RULE-SET,YouTube,🌐Google服务
+  - RULE-SET,Facebook-zj,📺国际流媒体
+  - RULE-SET,Netflix,📺国际流媒体
+  - RULE-SET,WildRift-zj,🎮国际游戏
+  - RULE-SET,games,🎮国际游戏
+  - RULE-SET,abroad_dns_cdn,🌍全球加速
+  - RULE-SET,proxy,🌍全球加速
+  - RULE-SET,tld-not-cn,🌍全球加速
+  - RULE-SET,gfw,🌍全球加速
+  # 3. 国外 GEO
+  - GEOSITE,douyin,🎷抖音
+  - GEOSITE,category-games-!cn,🎮国际游戏
+  - GEOSITE,google,🌐Google服务
+  - GEOSITE,openai,🧠OpenAI
+  - GEOSITE,telegram,💻Telegram
+  - GEOSITE,gitHub,😊微软服务
+  - GEOSITE,microsoft,😊微软服务
+  - GEOSITE,tiktok,🎬TikTok
+  - GEOSITE,facebook,📺国际流媒体
+  - GEOSITE,instagram,📺国际流媒体
+  - GEOSITE,whatsapp,📺国际流媒体
+  - GEOSITE,twitter,🌍全球加速
+  - GEOSITE,greatfire,🌍全球加速
+  - GEOSITE,gfw,🌍全球加速
+  - GEOSITE,geolocation-!cn,🌍全球加速
+  - GEOIP,telegram,💻Telegram,no-resolve
+  - GEOIP,google,🌐Google服务,no-resolve
+  - GEOIP,cloudflare,🌍全球加速,no-resolve
+  - GEOIP,cloudfront,🌍全球加速,no-resolve
+  - GEOIP,fastly,🌍全球加速,no-resolve
+  - IP-ASN,15169,🌐Google服务,no-resolve
+  - IP-ASN,396982,🌐Google服务,no-resolve
+  - IP-ASN,8075,😊微软服务,no-resolve
+  - IP-ASN,8070,😊微软服务,no-resolve
+  - GEOIP,!cn,🌍全球加速
+  # 4. 国内规则集
+  - RULE-SET,cn_dns_cdn,🎯直连
+  - RULE-SET,private,🎯直连
+  - RULE-SET,direct,🎯直连
+  - RULE-SET,applications,🎯直连
+  - RULE-SET,Agora-zj,🎯直连
+  # 5. 国内 GEO
+  - GEOSITE,category-games-cn,🎯直连
+  - GEOSITE,alibaba,⛩️国内网站
+  - GEOSITE,tencent,⛩️国内网站
+  - GEOSITE,cn,🎯直连
+  - GEOIP,private,🎯直连,no-resolve
+  - GEOIP,cn,🎯直连,no-resolve
+  # 6. 兜底
+  - MATCH,🤡漏网之鱼
+
+rule-anchor:
+  domain-yaml: &domain-yaml {type: http, behavior: domain, interval: 86400, format: yaml}
+  class-yaml: &class-yaml {type: http, behavior: classical, interval: 86400, format: yaml}
+  domain-txt: &domain-txt {type: http, behavior: domain, interval: 86400, format: text}
+  class-txt: &class-txt {type: http, behavior: classical, interval: 86400, format: text}
+  mrs-domain: &mrs-domain {type: http, behavior: domain, interval: 86400, format: mrs}
+  mrs-ipcidr: &mrs-ipcidr {type: http, behavior: ipcidr, interval: 86400, format: mrs}
+
+rule-providers:
+  advertising: {<<: *mrs-ipcidr, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/bx7-AdvertisingLite_ipcidr.mrs"}
+  reject: {<<: *mrs-domain, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/Loy-reject_domain.mrs"}
+  douyin-zj: {<<: *class-yaml, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/clash/douyin.yaml"}
+  TikTok-zj: {<<: *class-yaml, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/clash/TikTok.yaml"}
+  Telegram-zj: {<<: *class-yaml, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/clash/Telegram.yaml"}
+  OpenAI-zj: {<<: *class-yaml, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/clash/OpenAI.yaml"}
+  Facebook-zj: {<<: *class-yaml, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/clash/Facebook.yaml"}
+  Google-zj: {<<: *class-yaml, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/clash/Google.yaml"}
+  WildRift-zj: {<<: *class-yaml, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/clash/Wildrift.yaml"}
+  Agora-zj: {<<: *domain-yaml, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/clash/agora.yaml"}
+  GitHub-zj: {<<: *domain-yaml, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/clash/GitHub.yaml"}
+  icloud: {<<: *mrs-domain, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/Loy-icloud_domain.mrs"}
+  Apple: {<<: *mrs-domain, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/Loy-Apple_domain.mrs"}
+  Microsoft: {<<: *mrs-domain, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/bx7-Microsoft_domain.mrs"}
+  YouTube: {<<: *mrs-domain, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/bx7-YouTube_domain.mrs"}
+  Netflix: {<<: *mrs-domain, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/bx7-Netflix_domain.mrs"}
+  games: {<<: *mrs-domain, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/bx7-games_domain.mrs"}
+  abroad_dns_cdn: {<<: *class-yaml, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/clash/abroad_dns_cdn.yaml"}
+  proxy: {<<: *mrs-domain, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/Loy-proxy_domain.mrs"}
+  gfw: {<<: *mrs-domain, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/Loy-gfw_domain.mrs"}
+  tld-not-cn: {<<: *mrs-domain, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/Loy-tld-not-cn_domain.mrs"}
+  cn_dns_cdn: {<<: *class-yaml, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/clash/cn_dns_cdn.yaml"}
+  direct: {<<: *mrs-domain, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/Loy-direct_domain.mrs"}
+  private: {<<: *mrs-domain, url: "https://cdn.jsdelivr.net/gh/SHICHUNHUI88/vps-net-optimize@main/remote-mrs/Loy-private_domain.mrs"}
+  applications: {<<: *class-txt, url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"}
+
+global-interval: 300   
+health-check:
+  enable: true
+  url: https://www.gstatic.com/generate_204
+  fallback:
+    - https://www.apple.com/library/test/success.html
+    - https://cp.cloudflare.com/generate_204
+    - http://connect.rom.miui.com/generate_204
+
+experimental:
+  ignore-resolve-fail: true
+  clash-api: true
