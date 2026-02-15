@@ -106,34 +106,37 @@ jobs:
           python3 .github/scripts/analyze_geodata.py
 
       # --- 步骤 4: 推送 (使用你提供的参考逻辑) ---
+      # ... (前面的步骤保持不变) ...
       - name: Git push assets to "GeoData" branch
         run: |
-          # 将生成的内容移动到 push 目录
           mkdir -p push
           cp -r workspace/* push/
-          
           cd push || exit 1
           
-          # 初始化 git (孤儿分支模式)
           git init
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          # 这里的 -b GeoData 对应你原有的分支名，保持订阅链接不变
           git checkout -b GeoData
-          
           git add .
-          git commit -m "Auto Update Assets & Report: $(date +'%Y-%m-%d %H:%M:%S')"
-          
+          git commit -m "Auto Update: $(date +'%Y-%m-%d %H:%M:%S')"
           git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
           git push -f origin GeoData
 
-      # --- 步骤 5: 刷新 CDN (参考逻辑) ---
       - name: Purge jsdelivr CDN
         continue-on-error: true
         run: |
-          # 只刷新根目录的 README 和关键 stats.json，避免遍历成千上万个文件导致超时
+          # 刷新主页 README 和 stats
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@GeoData/README.md"
           curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@GeoData/stats.json"
           
-          # 如果需要刷新特定文件，可以在这里添加
+          # 动态刷新每个作者目录下的 README.md
+          # 我们去 push 目录里找有哪些文件夹
+          cd push || exit 1
+          for dir in */; do
+              dirname=${dir%/} # 去掉末尾斜杠
+              # 排除隐藏目录
+              if [[ "$dirname" != .* ]]; then
+                  echo "Purging $dirname/README.md"
+                  curl -i "https://purge.jsdelivr.net/gh/${{ github.repository }}@GeoData/${dirname}/README.md"
+              fi
+          done
