@@ -19,7 +19,7 @@
 ## 📄 配置详情
 
 #### 📝 OneSmart_Lite_Config.yaml
-- **路径**: `OneSmart_Lite_Config.yaml` | **大小**: 12.5 KB | [查看源码](https://github.com/HenryChiao/MIHOMO_YAMLS/blob/main/THEYAMLS/Smart_Mode/666OS/OneSmart_Lite_Config.yaml)
+- **路径**: `OneSmart_Lite_Config.yaml` | **大小**: 12.5 KB | [查看源码](https://github.com/opyzzzz/MIHOMO_YAMLS/blob/main/THEYAMLS/Smart_Mode/666OS/OneSmart_Lite_Config.yaml)
 - **模式**: rule | **TUN**: 🚫 | **IPv6**: ✅
 <details>
 <summary>🔍 策略组 (16个)</summary>
@@ -45,7 +45,7 @@
 </details>
 
 #### 📝 OneSmart_Config.yaml
-- **路径**: `OneSmart_Config.yaml` | **大小**: 20.1 KB | [查看源码](https://github.com/HenryChiao/MIHOMO_YAMLS/blob/main/THEYAMLS/Smart_Mode/666OS/OneSmart_Config.yaml)
+- **路径**: `OneSmart_Config.yaml` | **大小**: 20.1 KB | [查看源码](https://github.com/opyzzzz/MIHOMO_YAMLS/blob/main/THEYAMLS/Smart_Mode/666OS/OneSmart_Config.yaml)
 - **模式**: rule | **TUN**: 🚫 | **IPv6**: ✅
 <details>
 <summary>🔍 策略组 (31个)</summary>

@@ -7,7 +7,7 @@
 ## 📄 配置详情
 
 #### 📝 Clash.yaml
-- **路径**: `Clash.yaml` | **大小**: 27.3 KB | [查看源码](https://github.com/HenryChiao/MIHOMO_YAMLS/blob/main/THEYAMLS/General_Config/ClashConnectRules/Clash.yaml)
+- **路径**: `Clash.yaml` | **大小**: 27.3 KB | [查看源码](https://github.com/opyzzzz/MIHOMO_YAMLS/blob/main/THEYAMLS/General_Config/ClashConnectRules/Clash.yaml)
 - **模式**: Rule | **TUN**: 🚫 | **IPv6**: 🚫
 <details>
 <summary>🔍 策略组 (27个)</summary>

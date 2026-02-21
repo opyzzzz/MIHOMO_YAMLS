@@ -7,7 +7,7 @@
 ## 📄 配置详情
 
 #### 📝 OneSmartProMCX.yaml
-- **路径**: `OneSmartProMCX.yaml` | **大小**: 41.3 KB | [查看源码](https://github.com/HenryChiao/MIHOMO_YAMLS/blob/main/THEYAMLS/Smart_Mode/edison/OneSmartProMCX.yaml)
+- **路径**: `OneSmartProMCX.yaml` | **大小**: 41.3 KB | [查看源码](https://github.com/opyzzzz/MIHOMO_YAMLS/blob/main/THEYAMLS/Smart_Mode/edison/OneSmartProMCX.yaml)
 - **模式**: rule | **TUN**: ✅ | **IPv6**: ✅
 <details>
 <summary>🔍 策略组 (32个)</summary>

@@ -4,8 +4,8 @@
 
 | 配置文件 (.conf) | 需要填写的订阅源 (Provider) | 操作 |
 | :--- | :--- | :--- |
-| **mihomo_multi.conf** | `$EN_KEY1`: Node-1<br>`$EN_KEY2`: Node-2 | [查看源码](https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/General_Config/yyhhyyyyyy/mihomo_multi.conf) |
-| **mihomo_single.conf** | `$EN_KEY1`: Node | [查看源码](https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/General_Config/yyhhyyyyyy/mihomo_single.conf) |
+| **mihomo_multi.conf** | `$EN_KEY1`: Node-1<br>`$EN_KEY2`: Node-2 | [查看源码](https://raw.githubusercontent.com/opyzzzz/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/General_Config/yyhhyyyyyy/mihomo_multi.conf) |
+| **mihomo_single.conf** | `$EN_KEY1`: Node | [查看源码](https://raw.githubusercontent.com/opyzzzz/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/General_Config/yyhhyyyyyy/mihomo_single.conf) |
 
 ---
 [🔙 返回总览](../README.md)

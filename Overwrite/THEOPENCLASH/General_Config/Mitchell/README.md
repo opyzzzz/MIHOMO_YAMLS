@@ -4,7 +4,7 @@
 
 | 配置文件 (.conf) | 需要填写的订阅源 (Provider) | 操作 |
 | :--- | :--- | :--- |
-| **config.conf** | `$EN_KEY1`: 1.p1<br>`$EN_KEY2`: 2.p2<br>`$EN_KEY3`: 3.p3<br>`$EN_KEY4`: 4.p4 | [查看源码](https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/General_Config/Mitchell/config.conf) |
+| **config.conf** | `$EN_KEY1`: 1.p1<br>`$EN_KEY2`: 2.p2<br>`$EN_KEY3`: 3.p3<br>`$EN_KEY4`: 4.p4 | [查看源码](https://raw.githubusercontent.com/opyzzzz/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/General_Config/Mitchell/config.conf) |
 
 ---
 [🔙 返回总览](../README.md)

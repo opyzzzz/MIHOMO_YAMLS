@@ -4,7 +4,7 @@
 
 | 配置文件 (.conf) | 需要填写的订阅源 (Provider) | 操作 |
 | :--- | :--- | :--- |
-| **ConfigForClash.conf** | `$EN_KEY1`: 机场一 | [查看源码](https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/General_Config/fufu/ConfigForClash.conf) |
+| **ConfigForClash.conf** | `$EN_KEY1`: 机场一 | [查看源码](https://raw.githubusercontent.com/opyzzzz/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/General_Config/fufu/ConfigForClash.conf) |
 
 ---
 [🔙 返回总览](../README.md)

@@ -4,7 +4,7 @@
 
 | 配置文件 (.conf) | 需要填写的订阅源 (Provider) | 操作 |
 | :--- | :--- | :--- |
-| **Clash.conf** | `$EN_KEY1`: all-proxies | [查看源码](https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/General_Config/ClashConnectRules/Clash.conf) |
+| **Clash.conf** | `$EN_KEY1`: all-proxies | [查看源码](https://raw.githubusercontent.com/opyzzzz/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/General_Config/ClashConnectRules/Clash.conf) |
 
 ---
 [🔙 返回总览](../README.md)

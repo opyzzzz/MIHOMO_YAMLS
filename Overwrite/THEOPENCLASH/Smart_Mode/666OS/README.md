@@ -4,8 +4,8 @@
 
 | 配置文件 (.conf) | 需要填写的订阅源 (Provider) | 操作 |
 | :--- | :--- | :--- |
-| **OneSmart_Config.conf** | `$EN_KEY1`: 优质服务商<br>`$EN_KEY2`: 备用服务商<br>`$EN_KEY3`: 落地服务商 | [查看源码](https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/Smart_Mode/666OS/OneSmart_Config.conf) |
-| **OneSmart_Lite_Config.conf** | `$EN_KEY1`: 优质服务商<br>`$EN_KEY2`: 备用服务商 | [查看源码](https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/Smart_Mode/666OS/OneSmart_Lite_Config.conf) |
+| **OneSmart_Config.conf** | `$EN_KEY1`: 优质服务商<br>`$EN_KEY2`: 备用服务商<br>`$EN_KEY3`: 落地服务商 | [查看源码](https://raw.githubusercontent.com/opyzzzz/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/Smart_Mode/666OS/OneSmart_Config.conf) |
+| **OneSmart_Lite_Config.conf** | `$EN_KEY1`: 优质服务商<br>`$EN_KEY2`: 备用服务商 | [查看源码](https://raw.githubusercontent.com/opyzzzz/MIHOMO_YAMLS/main/Overwrite/THEOPENCLASH/Smart_Mode/666OS/OneSmart_Lite_Config.conf) |
 
 ---
 [🔙 返回总览](../README.md)
