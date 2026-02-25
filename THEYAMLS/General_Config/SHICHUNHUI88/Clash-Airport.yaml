@@ -1,6 +1,6 @@
 # 1先下载编辑器，苹果用Textastic Code编辑，电脑用VS Code编辑，安卓用Acode编辑
 # 2把我的配置全部复制到编辑器里面，把下面第8行,机场链接 url："这里的机场链接换成自己的机场链接"
-# 3然后保存“名称.yaml”文件格式导入软件就可以使用了（只支持mihomo核）
+# 3然后保存“名称.yaml”文件格式到本地，导入软件就可以使用了（只支持mihomo核）
 
 # 这是机场配置，可以将下面的机场url链接换成自己的机场链接，保留引号符
 p: &p {type: http, interval: 3600, proxy: "🌍全球加速", health-check: {enable: true, url: "https://www.gstatic.com/generate_204", interval: 300}}
@@ -89,6 +89,7 @@ dns:
   listen: 0.0.0.0:1053
   ipv6: true
   enhanced-mode: fake-ip
+  timeout: 8000
   cache-algorithm: arc
   cache: {enable: true, size: 4096, expired: 180}
   fake-ip-range: 198.18.0.0/16
@@ -100,7 +101,7 @@ dns:
   respect-rules: true
   direct-nameserver-follow-policy: true
   fake-ip-filter-mode: blacklist
-  fake-ip-filter: ["localhost","+.lan","+.local","+.arpa","time.*.com","time.*.apple.com","pool.ntp.org","+.ntp.org","captive.apple.com","connectivitycheck.gstatic.com","msftconnecttest.com","msftncsi.com","+.srv.nintendo.net","+.stun.playstation.net","+.xboxlive.com", "openai.com", "*.openai.com","*.japps.cn","*.samsung.com"]
+  fake-ip-filter: ["localhost","+.lan","+.local","+.arpa","pool.ntp.org","+.ntp.org","captive.apple.com","connectivitycheck.gstatic.com","msftconnecttest.com","msftncsi.com","openai.com","+.openai.com","+.srv.nintendo.net","+.stun.playstation.net","+.xboxlive.com","report-v2.samsung.japps.cn","rule-set:private"]
   direct-nameserver: ["system"]
   default-nameserver: ["223.5.5.5", "119.29.29.29", "114.114.114.114", "180.76.76.76"]
   nameserver: ["https://dns.alidns.com/dns-query", "https://1.1.1.1/dns-query", "https://doh.pub/dns-query", "https://dns.google/dns-query", "https://dns.quad9.net/dns-query", "https://dns.adguard.com/dns-query", "tls://cloudflare-dns.com:853", "tls://dns.google:853"]
@@ -236,7 +237,6 @@ rules:
   - IP-ASN,396982,🌐Google服务,no-resolve
   - IP-ASN,8075,😊微软服务,no-resolve
   - IP-ASN,8070,😊微软服务,no-resolve
-  - GEOIP,!cn,🌍全球加速
   # 4. 国内规则集
   - RULE-SET,cn_dns_cdn,🎯直连
   - RULE-SET,Alibaba,⛩️国内网站
@@ -253,6 +253,7 @@ rules:
   - GEOIP,private,🎯直连,no-resolve
   - GEOIP,cn,🎯直连,no-resolve
   # 6. 兜底
+  - GEOIP,!cn,🤡漏网之鱼
   - MATCH,🤡漏网之鱼
 
 rule-anchor:

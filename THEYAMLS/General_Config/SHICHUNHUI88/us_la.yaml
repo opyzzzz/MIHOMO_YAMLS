@@ -239,7 +239,6 @@ rules:
   - IP-ASN,396982,🌐Google服务,no-resolve
   - IP-ASN,8075,😊微软服务,no-resolve
   - IP-ASN,8070,😊微软服务,no-resolve
-  - GEOIP,!cn,🌍全球加速
   # 4. 国内规则集
   - RULE-SET,cn_dns_cdn,🎯直连
   - RULE-SET,Alibaba,⛩️国内网站
@@ -256,6 +255,7 @@ rules:
   - GEOIP,private,🎯直连,no-resolve
   - GEOIP,cn,🎯直连,no-resolve
   # 6. 兜底
+  - GEOIP,!cn,🤡漏网之鱼
   - MATCH,🤡漏网之鱼
 
 rule-anchor:
